@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map-canvas {
+        width: 100%;
+        height: 600px;
+        padding: 20px;
+      }
+    </style>
+    
+    <title>Food Map 101 - Restaurant Map for Waterloo Region</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/one-page-wonder.css" rel="stylesheet">
+    
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+		var geocoder;
+	    var map;
+	    var markers = [];
+	
+		var xmlhttp = new XMLHttpRequest();
+		var url = "./resturant.txt";
+		
+		//codeAddress('Waterloo, ON, Canada','Resturant \n Waterloo');
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var myArr = JSON.parse(xmlhttp.responseText);
+				myFunction(myArr);
+				//alert("Done");
+				//abc();
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		
+		function abc(){
+			codeAddress('Waterloo, ON, Canada','Resturant \n Waterloo');
+		}
+		
+		
+		function myFunction(arr) {
+			var out = "";
+			var _address="";
+			var _title="";
+			var i;
+			for(i = 0; i < arr.length; i++) {
+				//out += 'Name:' + arr[i].name+ ', Street:' + arr[i].street + ', City:' + 
+				//arr[i].city + '<br>';
+				_address= arr[i].street + ', ' + arr[i].city + ', ON';
+				_title=arr[i].name;
+				codeAddress(_address,_title);
+				//alert(_address);
+			}
+			//document.getElementById("id01").innerHTML = out;
+		}
+
+		///
+        function initialize() {
+		  geocoder = new google.maps.Geocoder();
+          var mapCanvas = document.getElementById('map-canvas');
+		  var myLatlng = new google.maps.LatLng(43.455928, -80.554779);
+		  var myLatlng1 = new google.maps.LatLng(43.46, -80);
+          var mapOptions = {			  
+			  center: myLatlng, 
+			  zoom: 12,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			map = new google.maps.Map(mapCanvas, mapOptions)
+		}
+		
+		
+		
+		
+		
+		// Add a marker to the map using co-ordinates and push to the array.
+		function addMarker(location) {
+		  var marker = new google.maps.Marker({
+			position: location,
+			map: map,
+			title:'Resturant'
+		  });
+		  markers.push(marker);
+		}
+		
+//		var infowindow = null;
+		
+		// Add a marker to the map using address and push to the array.
+		function codeAddress(address, aTitle) {		 
+		  geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {			  
+			  var marker = new google.maps.Marker({
+				  map: map,				  
+				  position: results[0].geometry.location,
+				  title: aTitle
+			  });
+			 markers.push(marker);
+			 
+			var infowindow = new google.maps.InfoWindow({
+	      content: '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">'+ aTitle+'</h3>'+
+      '<div id="bodyContent">'+
+      '<p>is a good place for eating.</p>'+
+      '</div>'+
+      '</div>'
+	  	}); 
+	  	
+			google.maps.event.addListener(marker, "click", function () {
+		 		
+		 		
+        infowindow.open(map, marker);
+      });
+			 
+			 
+			 
+			 
+			} else {
+			  alert('Geocode was not successful for the following reason: ' + status);
+			}
+		  });
+		}
+		
+		
+
+		
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+  
+  
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container_fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">FoodMap101</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#list">Restaurant List</a>
+                    </li>
+                    <li>
+                        <a href="#categories">Categories</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#list">Contact Us</a>
+                    </li>
+                    <li>
+                        <input id="address" type="text" placeholder="Search" style="margin:7.5px 15px">
+                    </li>  
+                    <li>
+			            <button type="button" class="btn btn-info" style="margin:2px"  onclick="codeAddressSearch()">
+                          <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+			        </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <!-- Full Width Image Header -->
+   	<div class="headline">
+            <div class="container">
+                <div id="map-canvas"></div>	
+            </div>
+		</div>
+    
+    <!-- Page Content -->
+    <div class="container">
+    <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; FoodMap101 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+    
+
+    
+	
+	
+		<div id="id01"></div>
+	
+  </body>
+</html>

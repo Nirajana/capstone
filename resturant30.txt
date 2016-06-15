@@ -1,0 +1,102 @@
+[
+  {
+    "FACILITYID":"42027AA4-C596-4C83-B186-CF85966CDCD8",
+    "BUSINESS_NAME":"YWCA ST. PAUL CHILDCARE CENTRE",
+    "TELEPHONE":"",
+    "ADDR":"45 BIRCHCLIFF AVE",
+    "CITY":"KITCHENER",
+    "EATSMART":"No",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"FDBEB3DA-29CD-48C7-984A-7F63A6B9AA3D",
+    "BUSINESS_NAME":"WATERLOO HEIGHTS RETIREMENT APARTMENTS",
+    "TELEPHONE":"(519) 886-3410",
+    "ADDR":"170 ERB ST W",
+    "CITY":"WATERLOO",
+    "EATSMART":"Y",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Retirement Home"
+  },
+  {
+    "FACILITYID":"CA8EECC4-3B9C-4B86-A921-D73638E9117C",
+    "BUSINESS_NAME":"TENDER LOVING DAY CARE",
+    "TELEPHONE":"(519) 740-2442",
+    "ADDR":"2 GRAND AVE S",
+    "CITY":"CAMBRIDGE",
+    "EATSMART":"CFS",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"E5E8E867-1F4F-4A84-AA0E-F803A77A3833",
+    "BUSINESS_NAME":"NITHVIEW HOME",
+    "TELEPHONE":"(519) 662-2280",
+    "ADDR":"200 BOULLEE ST",
+    "CITY":"NEW HAMBURG",
+    "EATSMART":"NO",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Retirement Home"
+  },
+  {
+    "FACILITYID":"6FCA2227-D921-44C3-A5D5-BBD917D9522C",
+    "BUSINESS_NAME":"CAMBRIDGE CHILDREN'S CENTRE",
+    "TELEPHONE":"(519) 622-4390",
+    "ADDR":"99 BEECHWOOD RD",
+    "CITY":"CAMBRIDGE",
+    "EATSMART":"Y",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"18CB908D-C189-442F-BF57-65A0A156AE9E",
+    "BUSINESS_NAME":"JUMPING JACKS CHILD CARE CENTRE",
+    "TELEPHONE":"(519) 624-5656",
+    "ADDR":"685 MYERS RD",
+    "CITY":"CAMBRIDGE",
+    "EATSMART":"No",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"2D73714A-F3ED-409A-8EA5-F5B1C0D282C7",
+    "BUSINESS_NAME":"SALVATION ARMY- NEW DIRECTIONS",
+    "TELEPHONE":"(519) 744-4666",
+    "ADDR":"1 - 657 KING ST E E",
+    "CITY":"KITCHENER",
+    "EATSMART":"Y",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Institutional Servery"
+  },
+  {
+    "FACILITYID":"C1D461DE-C17A-4DE7-A2DF-B8457396A7F5",
+    "BUSINESS_NAME":"YWCA LINC PRE-SCHOOL",
+    "TELEPHONE":"519-622-6951",
+    "ADDR":"6 CAMBRIDGE ST",
+    "CITY":"CAMBRIDGE",
+    "EATSMART":"CFS",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"E17075D9-5A69-4079-A016-367106AB8F85",
+    "BUSINESS_NAME":"BRESLAU CHILD CARE",
+    "TELEPHONE":"(519) 242-8589",
+    "ADDR":"58 JOSEPH ST",
+    "CITY":"BRESLAU",
+    "EATSMART":"No",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Child Care Onsite Prep./Recreational Camp/Co-op"
+  },
+  {
+    "FACILITYID":"DCADE1F3-DF7C-4CAB-9E7E-56570C855C5E",
+    "BUSINESS_NAME":"DARING RESIDENTIAL HOME",
+    "TELEPHONE":"(519) 743-5117",
+    "ADDR":"226 QUEEN ST S",
+    "CITY":"KITCHENER",
+    "EATSMART":"Y",
+    "OPEN_DATE":"2006/01/01",
+    "DESCRIPTION":"Food, Institutional - Group / Lodging Home (>9)"
+  }
+]

@@ -1,0 +1,17 @@
+    http://streetfoodapp.com/kitchener-waterloo/map
+    
+    http://wrightshq.com/playground/adding-an-info-window-to-our-google-map-marker-using-api-3/
+    
+    Simple API with on-click info windows
+
+2015-07-03
+
+    open-source logo software
+    https://inkscape.org/en/
+    
+    http://getbootstrap.com/components/
+    
+    https://openclipart.org/
+    
+    https://www.google.com/fonts
+

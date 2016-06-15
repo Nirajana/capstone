@@ -1,0 +1,47 @@
+[
+{
+"name": "Bread Heads",
+"street":"16 Duke St E",
+"city": "Kitchener"
+},
+{
+"name": "Pizza Nova",
+"street": "150 University Ave W",
+"city": "Waterloo"
+},
+{
+"name": "STRIPES",
+"street": "24 Madison Ave S",
+"city": "Kitchener"
+},
+{
+"name": "Royal Pizza",
+"street": "280 Victoria St N",
+"city": "Kitchener"
+},
+{
+"name": "Domino's Pizza",
+"street": "450 Columbia St W",
+"city": "Waterloo"
+},
+{
+"name": "Pizza Pizza",
+"street": "223 King Street East",
+"city": "Waterloo"
+},
+{
+"name": "Pizza Hut",
+"street": "91 University Ave E",
+"city": "Waterloo"
+},
+{
+"name": "Pizza Pizza",
+"street": "247 King St N",
+"city": "Waterloo"
+},
+{
+"name": "Pizza Pizza",
+"street": "450 Erb St W",
+"city": "Waterloo"
+}
+]

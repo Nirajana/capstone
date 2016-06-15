@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map-canvas {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+		var geocoder;
+	    var map;
+	    var markers = [];
+		
+        function initialize() {
+		  geocoder = new google.maps.Geocoder();
+          var mapCanvas = document.getElementById('map-canvas');
+		  var myLatlng = new google.maps.LatLng(43.455928, -80.554779);
+		  var myLatlng1 = new google.maps.LatLng(43.46, -80);
+          var mapOptions = {			  
+			  center: myLatlng, 
+			  zoom: 8,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			map = new google.maps.Map(mapCanvas, mapOptions)
+			
+			// Adds a marker at the  map using coordinates.
+			addMarker(myLatlng);
+			addMarker(myLatlng1);
+			
+			// Adds a marker at the  map using address
+			codeAddress('Waterloo, ON, Canada','Resturant \n Waterloo');
+			codeAddress('Guelph, ON, Canada','Resturant \n Guelph');
+			codeAddress('Cambridge, ON, Canada','Resturant \n Cambridge');			
+		}
+	  
+		// Add a marker to the map using co-ordinates and push to the array.
+		function addMarker(location) {
+		  var marker = new google.maps.Marker({
+			position: location,
+			map: map,
+			title:'Resturant'
+		  });
+		  markers.push(marker);
+		}
+		// Add a marker to the map using address and push to the array.
+		function codeAddress(address, aTitle) {		 
+		  geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {			  
+			  var marker = new google.maps.Marker({
+				  map: map,				  
+				  position: results[0].geometry.location,
+				  title: aTitle
+			  });
+			 markers.push(marker);
+			} else {
+			  alert('Geocode was not successful for the following reason: ' + status);
+			}
+		  });
+		}
+		
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>	
+  </body>
+</html>

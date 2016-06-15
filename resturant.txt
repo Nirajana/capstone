@@ -1,0 +1,63 @@
+[
+
+{
+"name": "PEPI'S PIZZA",
+"street":"390 COURTLAND AVE E E",
+"city": "Kitchener"
+},
+
+{
+"name": "PIZZA NOVA",
+"street": "150 University Ave W",
+"city": "Waterloo"
+},
+
+{
+"name": "DAVENPORT PIZZA",
+"street": "5 - 615 DAVENPORT RD",
+"city": "WATERLOO"
+},
+
+{
+"name": "ROYAL PIZZA",
+"street": "280 Victoria St N",
+"city": "Kitchener"
+},
+
+{
+"name": "DOMINO'S PIZZA",
+"street": "450 Columbia St W",
+"city": "Waterloo"
+},
+
+{
+"name": "PIZZA PIZZA",
+"street": "223 King Street East",
+"city": "Waterloo"
+},
+
+{
+"name": "PIZZA HUT",
+"street": "91 University Ave E",
+"city": "Waterloo"
+},
+
+{
+"name": "PLANET PIZZA",
+"street": "223 LOUISA ST",
+"city": "KITCHENER"
+},
+
+{
+"name": "GINO'S PIZZA",
+"street": "14 - 370 HIGHLAND RD W",
+"city": "KITCHENER"
+}
+,
+
+{
+"name": "BOSTON PIZZA",
+"street": "597 KING ST N",
+"city": "WATERLOO"
+}
+]

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Food Map - Restaurant Map for Waterloo Region</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+        #map-canvas {
+            width: 100%;
+            height: 600px;
+            padding: 20px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+		var geocoder;
+	    var map;
+	    var markers = [];
+	    var myArr;
+	
+		var xmlhttp = new XMLHttpRequest();
+		var url = "./resturant.txt";
+		
+		//codeAddress('Waterloo, ON, Canada','Resturant \n Waterloo');
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				//var myArr = JSON.parse(xmlhttp.responseText);
+				myArr = JSON.parse(xmlhttp.responseText);
+				myFunction(myArr);
+				//alert("Done");
+				//abc();
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		
+		function abc(){
+			codeAddress('Waterloo, ON, Canada','Resturant \n Waterloo');
+		}
+		
+		// Populate markers on the map according to the addresses in the JSON file
+		function myFunction(arr) {
+			var out = "";
+			var _address="";
+			var _title="";
+			var i;
+			for(i = 0; i < arr.length; i++) {
+				//out += 'Name:' + arr[i].name+ ', Street:' + arr[i].street + ', City:' + 
+				//arr[i].city + '<br>';
+				_address= arr[i].street + ', ' + arr[i].city + ', ON';
+				_title=arr[i].name;
+				codeAddress(_address,_title);
+				//alert(_address);
+			}
+			//document.getElementById("id01").innerHTML = out;
+		}
+
+		///
+        function initialize() {
+		  geocoder = new google.maps.Geocoder();
+          var mapCanvas = document.getElementById('map-canvas');
+		  var myLatlng = new google.maps.LatLng(43.455928, -80.554779);
+		  var myLatlng1 = new google.maps.LatLng(43.46, -80);
+          var mapOptions = {			  
+			  center: myLatlng, 
+			  zoom: 12,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			map = new google.maps.Map(mapCanvas, mapOptions)
+		}
+		
+		
+		
+		
+		
+		// Add a marker to the map using co-ordinates and push to the array.
+		function addMarker(location) {
+		  var marker = new google.maps.Marker({
+			position: location,
+			map: map,
+			icon: 'cut1.png',
+			title:'Resturant'
+		  });
+		  markers.push(marker);
+		}
+		
+		var infowindow = null;
+		
+		// Add a marker to the map using address and push to the array.
+		function codeAddress(address, aTitle) {		 
+		  geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {			  
+			  var marker = new google.maps.Marker({
+				  map: map,				  
+				  position: results[0].geometry.location,
+				  icon: 'pinpoint.png',
+				  title: aTitle
+			  });
+			 markers.push(marker);
+			 
+			/*var infowindow = new google.maps.InfoWindow({
+	      content: '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">'+ aTitle+'</h3>'+
+      '<div id="bodyContent">'+
+      '<p>is a good place for eating.</p>'+
+      '</div>'+
+      '</div>'
+	  	}); */
+	  	
+			google.maps.event.addListener(marker, "click", function () {
+			    if (infowindow) {
+                    infowindow.close();
+                }
+		 		infowindow = new google.maps.InfoWindow({
+            	      content: '<div id="content">'+
+                  '<div id="siteNotice">'+
+                  '</div>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ aTitle+'</h3>'+
+                  '<div id="bodyContent">'+
+                  '<p>223 LOUISA ST	<mark>KITCHENER</mark></p>'+
+                  '</div>'+
+                  '<div>'+
+                  '<p>(519) 570-9555</p>'+
+                  '</div>'+
+                  '<div>'+
+                  '<p>CFS:<mark>NO</mark></p>'+
+                  '</div>'+
+                  '<div>'+
+                  '<p><code>Food Take Out</code></p>'+
+                  '</div>'+
+                  '</div>'
+            	  	});
+		 		
+        infowindow.open(map, marker);
+      });
+			 
+			 
+			 
+			 
+			} else {
+			  alert('Geocode was not successful for the following reason: ' + status);
+			}
+		  });
+		}
+		
+//		var searchBox = new google.maps.places.SearchBox(
+//    /** @type {HTMLInputElement} */(input));
+
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+/*  google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    for (var i = 0, marker; marker = markers[i]; i++) {
+      marker.setMap(null);
+    }*/
+		
+		function searchCity() {
+			//var arr=myArr;
+			for(var i = 0; i < myArr.length; i++) {				
+				if(myArr[i].city=='Waterloo')
+					markers[i].setMap(map);
+				else
+					markers[i].setMap(null);
+			}
+		}
+
+		
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height:60px;">
+        <div class="container_fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                <img src="foodmap.png" alt="food map logo" style="width:150px;height:28px;">
+
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html#categories">Categories</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="about.html#contactUs">Contact Us</a>
+                    </li>
+                    <li>
+                        <input id="address" type="text" placeholder="Search" style="margin:7.5px 15px">
+                    </li>  
+                    <li>
+			            <button type="button" class="btn btn-info" style="margin:2px"  onclick="codeAddressSearch()">
+                          <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+			        </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Width Map-Canvas -->
+    
+    <div class="container" id="map_container">
+            <div id="map-canvas"></div>	
+    </div>
+    
+        
+        
+
+    <!-- Page Content -->
+    <div class="container">
+    <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; FoodMap 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
